@@ -77,7 +77,6 @@ Server will run on:
 
 http://localhost:4000
 
-
 Open the application using:
 
 http://localhost:4000/home
