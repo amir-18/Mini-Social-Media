@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Edit: <%= posts.Postname %> | Social Platform</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+        }
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(63, 63, 70, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-[#09090b] text-zinc-100 flex items-center justify-center min-h-screen p-6 relative overflow-hidden">
+
+    <div class="bg-glow"></div>
+
+    <div class="w-full max-w-[600px] z-10">
+        <div class="flex items-center justify-between mb-8 px-2">
+            <div>
+                <h2 class="text-3xl font-black tracking-tighter text-white">Update Post</h2>
+                <p class="text-zinc-500 text-sm font-medium mt-1">Editing existing content</p>
+            </div>
+            <a href="/profile/<%= user._id %>" class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white transition-all shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl border border-zinc-800/50">
+            <form action="/Update/<%= posts._id %>" method="POST" class="space-y-6">
+                
+                <div class="space-y-5">
+                    <div class="flex items-center gap-3 ml-1 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center text-xs font-bold text-indigo-400">
+                            <%= user.username.charAt(0).toUpperCase() %>
+                        </div>
+                        <span class="text-sm font-bold text-zinc-400">Editing as @<%= user.username %></span>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] font-black text-zinc-500 mb-2 ml-1">Post Name</label>
+                        <input 
+                            type="text" 
+                            name="Postname" 
+                            value="<%= posts.Postname %>" 
+                            placeholder="Enter post name..."
+                            class="w-full px-6 py-4 rounded-2xl bg-zinc-950/50 border border-zinc-800 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all text-zinc-100 font-bold text-lg"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] font-black text-zinc-500 mb-2 ml-1">Content Body</label>
+                        <textarea 
+                            name="content" 
+                            rows="8" 
+                            placeholder="Update your post content..."
+                            class="w-full px-6 py-5 rounded-[2rem] bg-zinc-950/50 border border-zinc-800 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all text-zinc-300 leading-relaxed resize-none"
+                            required
+                        ><%= posts.content %></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex gap-4">
+                    <button type="button" onclick="history.back()" 
+                        class="flex-1 text-center bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 font-bold py-4 rounded-2xl transition-all border border-zinc-700/30">
+                        Discard
+                    </button>
+                    <button type="submit" 
+                        class="flex-[2] bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-600/20 active:scale-[0.98]">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-2">
+            <p class="text-[10px] text-zinc-700 font-black uppercase tracking-[0.3em]">
+                Secure Edit Mode
+            </p>
+            <p class="text-[11px] text-zinc-500 font-medium">
+                Internal ID: <span class="text-indigo-400/60"><%= posts._id %></span>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

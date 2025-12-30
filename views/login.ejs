@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login | Social Platform</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Subtle background glow */
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-[#09090b] text-zinc-100 flex items-center justify-center min-h-screen p-6 relative overflow-hidden">
+
+    <div class="bg-glow"></div>
+
+    <div class="w-full max-w-[440px]">
+        <div class="flex flex-col items-center mb-10">
+            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl rotate-12 flex items-center justify-center mb-6 shadow-xl shadow-indigo-500/20">
+                <svg class="w-7 h-7 text-white -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0012 3m0 0a10.003 10.003 0 0110 10c0 1.956-.56 3.781-1.532 5.327m-1.468 1.468A10.021 10.021 0 0112 21c-1.252 0-2.447-.23-3.551-.65m0 0c1.321-1.321 2.503-2.856 3.551-4.571"></path>
+                </svg>
+            </div>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Welcome back</h2>
+            <p class="text-zinc-500 font-medium">Enter your credentials to access your account</p>
+        </div>
+
+        <div class="bg-zinc-900/50 backdrop-blur-xl p-8 rounded-[2rem] border border-zinc-800/50 shadow-2xl">
+            <form action="/SignIn" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-xs uppercase tracking-widest font-bold text-zinc-500 mb-2 ml-1">Email Address</label>
+                    <input type="email" name="email" placeholder="name@example.com" 
+                        class="w-full px-5 py-4 rounded-2xl bg-zinc-950 border border-zinc-800 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-300 placeholder:text-zinc-700" required>
+                </div>
+
+                <div>
+                    <div class="flex justify-between mb-2 ml-1">
+                        <label class="text-xs uppercase tracking-widest font-bold text-zinc-500">Password</label>
+                        <a href="#" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">Forgot?</a>
+                    </div>
+                    <input type="password" name="password" placeholder="••••••••" 
+                        class="w-full px-5 py-4 rounded-2xl bg-zinc-950 border border-zinc-800 focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all duration-300 placeholder:text-zinc-700" required>
+                </div>
+
+                <button type="submit" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-indigo-600/20 active:scale-[0.98]">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="relative my-8">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-zinc-800"></div></div>
+                <div class="relative flex justify-center text-xs uppercase"><span class="bg-[#121214] px-3 text-zinc-500 font-bold tracking-widest">Or continue with</span></div>
+            </div>
+
+            <button class="w-full bg-zinc-950 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 font-semibold py-3 rounded-2xl transition-all flex items-center justify-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.908 3.152-2.108 4.012-1.464 1.044-3.792 2.04-7.84 2.04-6.72 0-12.12-5.4-12.12-12.12s5.4-12.12 12.12-12.12c3.6 0 6.336 1.32 8.316 3.18l2.316-2.316c-2.484-2.328-5.832-3.864-10.632-3.864-9.72 0-17.64 7.92-17.64 17.64s7.92 17.64 17.64 17.64c5.28 0 9.276-1.74 12.396-4.992 3.216-3.216 4.212-7.704 4.212-11.352 0-.912-.084-1.764-.24-2.52h-14.16z"/></svg>
+                Google
+            </button>
+        </div>
+
+        <p class="mt-8 text-center text-zinc-500 font-medium text-sm">
+            New to the platform? <a href="/register" class="text-indigo-400 font-bold hover:text-indigo-300 transition-colors underline underline-offset-4 decoration-2 decoration-indigo-500/20">Create an account</a>
+        </p>
+    </div>
+
+</body>
+</html>
